@@ -1,0 +1,60 @@
+Type the Piano includes third-party musical assets. These assets are not
+covered by the project's MIT License.
+
+MIDI PERFORMANCE
+Work: Frederic Chopin - Etude Op. 25 No. 1 (Harp Etude)
+MIDI realization: Copyright 2002 Bernd Krueger
+Source: http://www.piano-midi.de/ (original filename: chpn_op25_e1.mid)
+License: Creative Commons Attribution-ShareAlike 3.0 Germany
+https://creativecommons.org/licenses/by-sa/3.0/de/
+Changes: Renamed only; file contents are unchanged.
+
+PIANO SAMPLES
+Work: Salamander Grand Piano V3 (Yamaha C5)
+Creator: Alexander Holm
+Source: https://archive.org/details/SalamanderGrandPianoV3
+Distribution source: https://github.com/Tonejs/audio/tree/869b6f8d9cddb47d966238c012041480b1ce517a/salamander
+License: Creative Commons Attribution 3.0 Unported
+https://creativecommons.org/licenses/by/3.0/
+Changes: 30-pitch, 44.1 kHz, 128 kbps MP3 selection copied unchanged from
+the cited Tonejs/audio revision.
+
+No endorsement by the creators is implied. Source distributions and license
+links provide the complete terms. Repository documentation contains additional
+provenance and checksum details.
+
+RUNTIME SOFTWARE
+The production application includes these MIT-licensed packages:
+
+@tonejs/midi
+Copyright (c) 2016 Yotam Mann
+
+array-flatten
+Copyright (c) 2014 Blake Embrey (hello@blakeembrey.com)
+
+midi-file
+Copyright (c) 2016 Carter Thaxton
+
+react, react-dom, scheduler
+Copyright (c) Meta Platforms, Inc. and affiliates.
+
+The following MIT License terms apply to the runtime software components
+listed above:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
