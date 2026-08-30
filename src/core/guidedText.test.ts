@@ -1,9 +1,9 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
+import { DEFAULT_PIECE } from '../catalog'
 import { generateGuidedText } from './guidedText'
 import { compileMidi } from './midiCompiler'
-import type { CompiledPiece, Packet } from './types'
 
 const makePiece = (beatPacketCounts: number[], tickOffset = 0): CompiledPiece => {
   const packets: Packet[] = []
@@ -22,7 +22,7 @@ const makePiece = (beatPacketCounts: number[], tickOffset = 0): CompiledPiece =>
 const canonicalPiece = () => {
   const path = fileURLToPath(new URL('../../public/assets/midi/chopin-op25-no1-aeolian-harp.mid', import.meta.url))
   const bytes = readFileSync(path)
-  return compileMidi(bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength))
+  return compileMidi(bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength), DEFAULT_PIECE.trackNames)
 }
 
 describe('guided text generation', () => {

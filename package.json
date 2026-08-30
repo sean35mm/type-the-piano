@@ -2,7 +2,7 @@
   "name": "type-the-piano",
   "private": true,
   "version": "0.1.0",
-  "description": "Play Chopin's Aeolian Harp étude by typing on a physical keyboard.",
+  "description": "Play classical piano performances by typing on a physical keyboard.",
   "license": "MIT",
   "author": "Sean Gil",
   "homepage": "https://github.com/sean35mm/type-the-piano#readme",
@@ -14,7 +14,10 @@
     "url": "https://github.com/sean35mm/type-the-piano/issues"
   },
   "keywords": [
+    "beethoven",
     "chopin",
+    "classical-music",
+    "debussy",
     "piano",
     "typing",
     "web-audio"

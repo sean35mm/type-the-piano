@@ -3,11 +3,12 @@ import { sortCrossings } from './crossings'
 import { packetize } from './packetize'
 import type { CompiledNote, CompiledPiece, CrossingEvent } from './types'
 
-export const REQUIRED_TRACKS = ['Piano right', 'Piano right 2', 'Piano left'] as const
 
-export function compileMidi(arrayBuffer: ArrayBuffer): CompiledPiece {
+export function compileMidi(arrayBuffer: ArrayBuffer, trackNames: readonly string[]): CompiledPiece {
+  if (trackNames.length === 0) throw new Error('A piece must select at least one MIDI track.')
+  if (new Set(trackNames).size !== trackNames.length) throw new Error('MIDI track selections must be unique.')
   const midi = new Midi(arrayBuffer)
-  const selected = REQUIRED_TRACKS.map((name) => {
+  const selected = trackNames.map((name) => {
     const matches = midi.tracks.filter((track) => track.name === name)
     if (matches.length !== 1) {
       throw new Error(`Expected exactly one MIDI track named “${name}”; found ${matches.length}.`)
@@ -83,8 +84,8 @@ export function compileMidi(arrayBuffer: ArrayBuffer): CompiledPiece {
   }
 }
 
-export async function fetchAndCompileMidi(url: string): Promise<CompiledPiece> {
+export async function fetchAndCompileMidi(url: string, trackNames: readonly string[]): Promise<CompiledPiece> {
   const response = await fetch(url)
   if (!response.ok) throw new Error(`Could not load the MIDI file (${response.status}).`)
-  return compileMidi(await response.arrayBuffer())
+  return compileMidi(await response.arrayBuffer(), trackNames)
 }

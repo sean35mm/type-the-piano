@@ -1,10 +1,24 @@
 Type the Piano includes third-party musical assets. These assets are not
 covered by the project's MIT License.
 
-MIDI PERFORMANCE
+MIDI PERFORMANCES
 Work: Frederic Chopin - Etude Op. 25 No. 1 (Harp Etude)
 MIDI realization: Copyright 2002 Bernd Krueger
 Source: http://www.piano-midi.de/ (original filename: chpn_op25_e1.mid)
+License: Creative Commons Attribution-ShareAlike 3.0 Germany
+https://creativecommons.org/licenses/by-sa/3.0/de/
+Changes: Renamed only; file contents are unchanged.
+
+Work: Ludwig van Beethoven - Bagatelle in A minor, WoO 59 (Fur Elise)
+MIDI realization: Copyright 2004 Bernd Krueger
+Source: http://www.piano-midi.de/ (original filename: elise.mid)
+License: Creative Commons Attribution-ShareAlike 3.0 Germany
+https://creativecommons.org/licenses/by-sa/3.0/de/
+Changes: Renamed only; file contents are unchanged.
+
+Work: Claude Debussy - Clair de lune from Suite bergamasque, L. 75
+MIDI realization: Copyright 1998 Bernd Krueger
+Source: http://www.piano-midi.de/ (original filename: deb_clai.mid)
 License: Creative Commons Attribution-ShareAlike 3.0 Germany
 https://creativecommons.org/licenses/by-sa/3.0/de/
 Changes: Renamed only; file contents are unchanged.

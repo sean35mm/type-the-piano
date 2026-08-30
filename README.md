@@ -1,14 +1,25 @@
 # Type the Piano
 
-Play Frédéric Chopin's *Étude in A-flat major, Op. 25 No. 1* ("Aeolian Harp") by typing on a physical keyboard. Each eligible keystroke advances the performance by one musical event while locally stored piano samples provide the sound.
+Choose a classical piano performance and play it by typing on a physical keyboard. Each eligible keystroke advances the score by one musical event while locally stored grand-piano samples provide the sound.
+
+The library currently includes Chopin's *Aeolian Harp*, Beethoven's *Für Elise*, and Debussy's *Clair de lune*.
 
 ## Features
 
+- A browsable classical library with direct links to each performance.
 - **Guided mode:** follow a progressive text guide. A wrong key stays silent until corrected; Backspace clears the current typo.
 - **Free Play mode:** use eligible keys without a required text sequence.
 - Live performance progress, recent-key feedback, and guided words-per-minute and accuracy summaries.
 - Sampled Salamander Grand Piano audio, served entirely with the app.
 - Pause, resume, restart, and volume controls.
+
+## Roadmap
+
+- **Now:** expand and refine the classical library.
+- **Next:** local favorites, recent performances, and personal bests.
+- **Later:** optional accounts, cross-device sync, long-term statistics, and daily practice.
+
+The website carries the public-facing roadmap. GitHub issues track implementation details once work begins.
 
 ## Requirements
 

@@ -12,6 +12,7 @@ interface Voice {
 }
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`
+const MAX_OUTPUT_GAIN = 0.5
 
 export class PianoEngine {
   private context: AudioContext | null = null
@@ -28,7 +29,7 @@ export class PianoEngine {
     if (!this.context) {
       this.context = new AudioContext({ latencyHint: 'interactive' })
       this.master = this.context.createGain()
-      this.master.gain.value = this.volume * 0.34
+      this.master.gain.value = this.volume * MAX_OUTPUT_GAIN
       this.master.connect(this.context.destination)
     }
     await this.context.resume()
@@ -102,7 +103,7 @@ export class PianoEngine {
   setVolume(value: number): void {
     this.volume = Math.min(1, Math.max(0, value))
     if (this.context && this.master) {
-      this.master.gain.setTargetAtTime(this.volume * 0.34, this.context.currentTime, 0.015)
+      this.master.gain.setTargetAtTime(this.volume * MAX_OUTPUT_GAIN, this.context.currentTime, 0.015)
     }
   }
 

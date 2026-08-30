@@ -14,6 +14,32 @@ The assets listed here are third-party works and are not licensed under the proj
 
 The file was locally renamed but is otherwise byte-identical to the source file. Redistribution or adaptation must follow the attribution and ShareAlike terms of CC BY-SA 3.0 DE. No endorsement by the creator is implied.
 
+## Beethoven MIDI performance
+
+- Project path: `public/assets/midi/beethoven-woo59-fur-elise.mid`
+- Work: Ludwig van Beethoven, Bagatelle in A minor, WoO 59 ("Für Elise")
+- MIDI realization: © 2004 Bernd Krueger
+- Edition date stated in the MIDI metadata: 2004-10-09
+- License: [Creative Commons Attribution-ShareAlike 3.0 Germany](https://creativecommons.org/licenses/by-sa/3.0/de/)
+- Source: [piano-midi.de](http://www.piano-midi.de/) and its [copyright notice](http://piano-midi.de/copy.htm)
+- Archived source file: [Internet Archive capture](https://web.archive.org/web/20051211143909id_/http://www.piano-midi.de:80/midis/beethoven/elise.mid)
+- Original source filename: `elise.mid`
+
+The file was locally renamed but is otherwise byte-identical to the archived source file. Redistribution or adaptation must follow the attribution and ShareAlike terms of CC BY-SA 3.0 DE. No endorsement by the creator is implied.
+
+## Debussy MIDI performance
+
+- Project path: `public/assets/midi/debussy-clair-de-lune.mid`
+- Work: Claude Debussy, "Clair de lune" from Suite bergamasque, L. 75
+- MIDI realization: © 1998 Bernd Krueger
+- Edition date stated in the MIDI metadata: 1999-04-21
+- License: [Creative Commons Attribution-ShareAlike 3.0 Germany](https://creativecommons.org/licenses/by-sa/3.0/de/)
+- Source: [piano-midi.de](http://www.piano-midi.de/) and its [copyright notice](http://piano-midi.de/copy.htm)
+- Archived source file: [Internet Archive capture](https://web.archive.org/web/20051213232711id_/http://www.piano-midi.de:80/midis/debussy/deb_clai.mid)
+- Original source filename: `deb_clai.mid`
+
+The file was locally renamed but is otherwise byte-identical to the archived source file. Redistribution or adaptation must follow the attribution and ShareAlike terms of CC BY-SA 3.0 DE. No endorsement by the creator is implied.
+
 ## Salamander Grand Piano samples
 
 - Project path: `public/assets/piano/salamander/*.mp3`

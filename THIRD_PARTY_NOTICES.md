@@ -18,6 +18,8 @@ The MIT License permits use, copying, modification, distribution, sublicensing, 
 ## Bundled media
 
 - Bernd Krueger's MIDI realization of Chopin's Étude Op. 25 No. 1 is licensed under [CC BY-SA 3.0 Germany](https://creativecommons.org/licenses/by-sa/3.0/de/).
+- Bernd Krueger's MIDI realization of Beethoven's Bagatelle WoO 59, "Für Elise," is licensed under [CC BY-SA 3.0 Germany](https://creativecommons.org/licenses/by-sa/3.0/de/).
+- Bernd Krueger's MIDI realization of Debussy's "Clair de lune" is licensed under [CC BY-SA 3.0 Germany](https://creativecommons.org/licenses/by-sa/3.0/de/).
 - Alexander Holm's Salamander Grand Piano V3 samples are licensed under [CC BY 3.0 Unported](https://creativecommons.org/licenses/by/3.0/).
 
 See [ASSET_ATTRIBUTIONS.md](ASSET_ATTRIBUTIONS.md) for authorship, sources, modifications, and redistribution details. The app's Credits link opens the combined deployed notice at `public/assets/NOTICE.txt`.

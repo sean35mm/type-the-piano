@@ -1,10 +1,12 @@
 import { Midi } from '@tonejs/midi'
 import { describe, expect, it } from 'vitest'
-import { compileMidi, REQUIRED_TRACKS } from './midiCompiler'
+import { compileMidi } from './midiCompiler'
+
+const TRACKS = ['Piano right', 'Piano right 2', 'Piano left'] as const
 
 function fixture(options: { omit?: string; duplicate?: string } = {}): ArrayBuffer {
   const midi = new Midi()
-  for (const [index, name] of REQUIRED_TRACKS.entries()) {
+  for (const [index, name] of TRACKS.entries()) {
     if (name === options.omit) continue
     const track = midi.addTrack()
     track.name = name
@@ -25,15 +27,20 @@ function fixture(options: { omit?: string; duplicate?: string } = {}): ArrayBuff
 }
 
 describe('MIDI compiler track semantics', () => {
-  it('requires exactly one of every canonical track', () => {
-    expect(() => compileMidi(fixture({ omit: 'Piano left' }))).toThrow(/Piano left.*found 0/)
-    expect(() => compileMidi(fixture({ duplicate: 'Piano right' }))).toThrow(/Piano right.*found 2/)
+  it('requires exactly one of every configured track', () => {
+    expect(() => compileMidi(fixture({ omit: 'Piano left' }), TRACKS)).toThrow(/Piano left.*found 0/)
+    expect(() => compileMidi(fixture({ duplicate: 'Piano right' }), TRACKS)).toThrow(/Piano right.*found 2/)
+  })
+
+  it('rejects an empty or duplicate track selection', () => {
+    expect(() => compileMidi(fixture(), [])).toThrow(/at least one/)
+    expect(() => compileMidi(fixture(), ['Piano right', 'Piano right'])).toThrow(/unique/)
   })
 
   it('extracts normalized CC64 threshold, channel, and equal-time ordering', () => {
-    const piece = compileMidi(fixture())
+    const piece = compileMidi(fixture(), TRACKS)
     const sustain = piece.crossings.filter((event) => event.kind === 'sustain')
-    expect(piece.selectedTrackNames).toEqual(REQUIRED_TRACKS)
+    expect(piece.selectedTrackNames).toEqual(TRACKS)
     expect(sustain.map((event) => ({ channel: event.channel, down: event.down }))).toEqual([
       { channel: 2, down: false },
       { channel: 2, down: true },

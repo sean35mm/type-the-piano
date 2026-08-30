@@ -61,6 +61,13 @@ describe('PianoEngine production voice lifecycle', () => {
     vi.unstubAllGlobals()
   })
 
+  it('maps full volume to a stronger safe master output', () => {
+    const master = MockAudioContext.latest.gains[0]!
+    expect(master.gain.value).toBeCloseTo(0.36)
+    engine.setVolume(1)
+    expect(master.gain.setTargetAtTime).toHaveBeenLastCalledWith(0.5, 1, 0.015)
+  })
+
   it('releases repeated pitches independently by NoteId', () => {
     engine.attack(note('first'))
     engine.attack(note('second'))
