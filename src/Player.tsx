@@ -13,13 +13,16 @@ import { guidedKeyAction, StageKeyboardController, type AcceptedKey } from './in
 import { shouldRestoreStageFocus } from './input/stageFocus'
 import { GuidedTextView } from './ui/GuidedTextView'
 import { Piano } from './ui/Piano'
+import { SongRail } from './ui/SongRail'
 
 type Status = 'loading' | 'asleep' | 'waking' | 'ready' | 'active' | 'paused' | 'completed' | 'error'
 type PlayMode = 'guided' | 'free'
 
 interface PlayerProps {
   definition: PieceDefinition
-  onBack: () => void
+  onAbout: () => void
+  onCatalog: () => void
+  onSelect: (piece: PieceDefinition) => void
 }
 
 
@@ -34,7 +37,7 @@ interface VisualSnapshot {
   guided: GuidedTypingSnapshot | null
 }
 
-export default function Player({ definition, onBack }: PlayerProps) {
+export default function Player({ definition, onAbout, onCatalog, onSelect }: PlayerProps) {
   const [piece, setPiece] = useState<CompiledPiece | null>(null)
   const [guide, setGuide] = useState<GuidedText | null>(null)
   const [guideDisplay, setGuideDisplay] = useState<GuidedTypingSnapshot | null>(null)
@@ -501,10 +504,11 @@ export default function Player({ definition, onBack }: PlayerProps) {
       : 'Guided typing prompt is loading.'
 
   return (
+    <div className="player-layout">
+      <SongRail activePiece={definition} onAbout={onAbout} onCatalog={onCatalog} onSelect={onSelect} />
     <main className="instrument">
       <header className="masthead">
         <div className="piece-heading">
-          <button className="back-to-library" type="button" onClick={onBack}>Back to library</button>
           <p className="eyebrow">TYPE THE PIANO</p>
           <h1>{definition.title}</h1>
           <p className="subtitle">{definition.work} · {definition.composer}</p>
@@ -590,5 +594,6 @@ export default function Player({ definition, onBack }: PlayerProps) {
         <a href={`${import.meta.env.BASE_URL}assets/NOTICE.txt`} target="_blank" rel="noopener noreferrer" aria-label="Credits and third-party notices (opens in a new tab)" data-restore-stage-focus="true">Credits</a>
       </footer>
     </main>
+    </div>
   )
 }

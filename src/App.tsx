@@ -1,49 +1,80 @@
 import { useEffect, useState } from 'react'
-import { findPieceBySlug, type PieceDefinition } from './catalog'
+import { DEFAULT_PIECE, findPieceBySlug, type PieceDefinition } from './catalog'
 import Player from './Player'
+import { About } from './ui/About'
 import { Library } from './ui/Library'
 
+type View = 'player' | 'catalog' | 'about'
+
+interface ShellState {
+  view: View
+  piece: PieceDefinition
+}
+
+function readShellState(): ShellState {
+  const params = new URLSearchParams(window.location.search)
+  const requestedView = params.get('view')
+  const view = requestedView === 'catalog' || requestedView === 'about' ? requestedView : 'player'
+  return {
+    view,
+    piece: findPieceBySlug(params.get('piece')) ?? DEFAULT_PIECE,
+  }
+}
 
 export default function App() {
-  const [selectedPiece, setSelectedPiece] = useState<PieceDefinition | null>(() =>
-    findPieceBySlug(new URLSearchParams(window.location.search).get('piece')),
-  )
+  const [shell, setShell] = useState<ShellState>(readShellState)
 
   useEffect(() => {
-    const syncLocation = () => setSelectedPiece(
-      findPieceBySlug(new URLSearchParams(window.location.search).get('piece')),
-    )
+    const syncLocation = () => setShell(readShellState())
     window.addEventListener('popstate', syncLocation)
     return () => window.removeEventListener('popstate', syncLocation)
   }, [])
 
   useEffect(() => {
-    document.title = selectedPiece
-      ? `Type the Piano · ${selectedPiece.title}`
-      : 'Type the Piano · Classical Library'
-  }, [selectedPiece])
+    document.title = shell.view === 'player'
+      ? `Type the Piano · ${shell.piece.title}`
+      : `Type the Piano · ${shell.view === 'catalog' ? 'Catalog' : 'About'}`
+  }, [shell])
 
-  const openPiece = (piece: PieceDefinition) => {
+  const navigate = (view: View, piece = shell.piece) => {
     const url = new URL(window.location.href)
-    url.searchParams.set('piece', piece.slug)
-    window.history.pushState({ selectedFromLibrary: true }, '', url)
-    setSelectedPiece(piece)
+    if (view === 'player') url.searchParams.delete('view')
+    else url.searchParams.set('view', view)
+    if (piece.id === DEFAULT_PIECE.id) url.searchParams.delete('piece')
+    else url.searchParams.set('piece', piece.slug)
+    window.history.pushState({}, '', url)
+    setShell({ view, piece })
     window.scrollTo({ top: 0 })
   }
 
-  const openLibrary = () => {
-    if (window.history.state?.selectedFromLibrary) {
-      window.history.back()
-      return
-    }
-    const url = new URL(window.location.href)
-    url.searchParams.delete('piece')
-    window.history.replaceState({}, '', url)
-    setSelectedPiece(null)
-    window.scrollTo({ top: 0 })
+  if (shell.view === 'catalog') {
+    return (
+      <Library
+        currentPiece={shell.piece}
+        onAbout={() => navigate('about')}
+        onPlayer={() => navigate('player')}
+        onSelect={(piece) => navigate('player', piece)}
+      />
+    )
   }
 
-  return selectedPiece
-    ? <Player definition={selectedPiece} key={selectedPiece.id} onBack={openLibrary} />
-    : <Library onSelect={openPiece} />
+  if (shell.view === 'about') {
+    return (
+      <About
+        currentPiece={shell.piece}
+        onCatalog={() => navigate('catalog')}
+        onPlayer={() => navigate('player')}
+      />
+    )
+  }
+
+  return (
+    <Player
+      definition={shell.piece}
+      key={shell.piece.id}
+      onAbout={() => navigate('about')}
+      onCatalog={() => navigate('catalog')}
+      onSelect={(piece) => navigate('player', piece)}
+    />
+  )
 }
